@@ -1,3 +1,6 @@
-GET        /learning-and-experiments        controllers.LearningAndExperimentsController.index
+GET         /learning-and-experiments         controllers.LearningAndExperimentsController.index
+GET         /kafkaing                         controllers.KafkaingController.show(success: Option[Boolean] ?= None)
+POST        /kafkaing                         controllers.KafkaingController.submit
+GET         /kafkaing-consumed-records        controllers.KafkaingController.showConsumedRecords
 
-GET        /assets/*file                    controllers.Assets.at(path="/public", file)
+GET         /assets/*file                     controllers.Assets.at(path="/public", file)

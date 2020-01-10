@@ -1,0 +1,30 @@
+@import helper._
+
+@(kafkaingForm: Form[String], kafkaWriteSuccess: Option[Boolean])(implicit request: RequestHeader)
+
+@main("Pete Hazell - Kafkaing") {
+    <div class="pb-2 mt-4 mb-2 border-bottom">
+        <h1>Kafkaing</h1>
+    </div>
+
+    @form(action = routes.KafkaingController.submit()) {
+        @CSRF.formField
+
+        <div class="form-group">
+            <label for="kafka-write-input">Enter a value:</label>
+            <input class="form-control" type="text" id="kafka-write-input" name="kafkaWriteInput">
+        </div>
+
+        @for(s <- kafkaWriteSuccess) {
+            <div class="alert alert-success" role="alert">
+              Record successfully written to kafka topic.
+            </div>
+        }
+
+        <div class="btn-group">
+            <button type="submit" class="btn btn-primary btn-lg">Write to kafka</button>
+            <a href="@routes.KafkaingController.showConsumedRecords()" class="btn btn-secondary btn-lg">
+                View consumed records</a>
+        </div>
+    }
+}

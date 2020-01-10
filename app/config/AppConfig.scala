@@ -6,7 +6,6 @@ import play.api.Configuration
 
 class AppConfig @Inject()(config: Configuration) {
 
-  val kafkaProducerConf: Config = ConfigFactory.load("kafka.producer")
-  val kafkaConsumerConf: Config = ConfigFactory.load("kafka.consumer")
+  val kafkaConf: Config = ConfigFactory.load()
 
 }

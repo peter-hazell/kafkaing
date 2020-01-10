@@ -1,0 +1,36 @@
+@import helper._
+
+@(kafkaingMessages: List[KafkaingMessage])(implicit request: RequestHeader)
+
+@main("Pete Hazell - Kafkaing") {
+    <div class="pb-2 mt-4 mb-2">
+        <a href="@routes.KafkaingController.show()">< Back</a>
+    </div>
+
+    @if(kafkaingMessages.isEmpty) {
+        <div class="alert alert-info" role="alert">
+            No consumed records are present in the AWS DynamoDB table.
+        </div>
+    } else {
+        <div class="alert alert-info" role="alert">
+            These records have been consumed from a kafka topic and stored in an AWS DynamoDB table.
+        </div>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Key</th>
+                    <th scope="col">Value</th>
+                </tr>
+            </thead>
+            <tbody>
+            @for(kafkaingMessage <- kafkaingMessages) {
+                <tr>
+                    <td>@kafkaingMessage.id</td>
+                    <td>@kafkaingMessage.value</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    }
+}

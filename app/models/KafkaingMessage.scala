@@ -1,3 +1,3 @@
 package models
 
-case class KafkaingMessage(id: String, key: String, value: String)
+case class KafkaingMessage(id: String, value: String)
