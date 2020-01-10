@@ -15,15 +15,18 @@ class KafkaingProducerService @Inject()(appConfig: AppConfig)(
     implicit ec: ExecutionContext
 ) {
 
-  def uuid: String = UUID.randomUUID().toString
-  val topic = "kafkaing_input"
+  val topic = "kafkaing"
 
   val producer = KafkaProducer(
     Conf(appConfig.kafkaConf, new StringSerializer(), new StringSerializer())
   )
 
   def writeToKafka(value: String): Future[Unit] = {
-    val record = new ProducerRecord[String, String](topic, uuid, value)
+    val record = new ProducerRecord[String, String](
+      topic,
+      UUID.randomUUID().toString,
+      value
+    )
 
     producer.send(record).map(_ => ())
   }

@@ -18,7 +18,7 @@ class KafkaingConsumerService @Inject()(
     appConfig: AppConfig
 )(implicit ec: ExecutionContext) {
 
-  val topic = "kafkaing_input"
+  val topic = "kafkaing"
 
   val consumer = KafkaConsumer(
     Conf(
