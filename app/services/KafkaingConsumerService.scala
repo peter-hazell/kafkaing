@@ -14,9 +14,9 @@ import scala.collection.JavaConverters._
 import scala.concurrent.{ExecutionContext, Future}
 
 class KafkaingConsumerService @Inject()(
-    kafkaingService: KafkaingService,
-    appConfig: AppConfig
-)(implicit ec: ExecutionContext) {
+  kafkaingService: KafkaingService,
+  appConfig:       AppConfig
+)(implicit ec:     ExecutionContext) {
 
   val topic = "kafkaing"
 

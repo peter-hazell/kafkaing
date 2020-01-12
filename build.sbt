@@ -3,7 +3,7 @@ resolvers += Resolver.bintrayRepo("cakesolutions", "maven")
 lazy val root = (project in file("."))
   .enablePlugins(PlayScala)
   .settings(
-    name := "learning-and-experiments",
+    name := "kafkaing",
     organization := "com.petehazell",
     version := "1.0-SNAPSHOT",
     scalaVersion := "2.11.12",

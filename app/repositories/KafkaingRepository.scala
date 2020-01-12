@@ -18,7 +18,7 @@ class KafkaingRepository {
   implicit val executor: ExecutionContextExecutor = system.dispatcher
 
   val settings = DynamoSettings(system)
-  val client = DynamoClient(settings)
+  val client   = DynamoClient(settings)
 
   val table: Table[KafkaingMessage] = Table[KafkaingMessage]("kafkaing")
 
@@ -28,7 +28,7 @@ class KafkaingRepository {
   }
 
   def put(
-      kafkaingMessage: KafkaingMessage
+    kafkaingMessage: KafkaingMessage
   ): Future[Option[Either[DynamoReadError, KafkaingMessage]]] = {
     val ops = table.put(kafkaingMessage)
     ScanamoAlpakka(client).execFuture(ops)

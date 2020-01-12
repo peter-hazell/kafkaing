@@ -7,7 +7,7 @@ import repositories.KafkaingRepository
 import scala.concurrent.{ExecutionContext, Future}
 
 class KafkaingService @Inject()(kafkaingRepository: KafkaingRepository)(
-    implicit ec: ExecutionContext
+  implicit ec:                                      ExecutionContext
 ) {
 
   def readKafkaingMessagesFromDb(): Future[List[KafkaingMessage]] =
@@ -16,9 +16,8 @@ class KafkaingService @Inject()(kafkaingRepository: KafkaingRepository)(
     })
 
   def writeKafkaingMessageToDb(
-      kafkaingMessage: KafkaingMessage
-  ): Future[Unit] = {
+    kafkaingMessage: KafkaingMessage
+  ): Future[Unit] =
     kafkaingRepository.put(kafkaingMessage).map(_ => ())
-  }
 
 }

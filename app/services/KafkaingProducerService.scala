@@ -12,7 +12,7 @@ import org.apache.kafka.common.serialization.StringSerializer
 import scala.concurrent.{ExecutionContext, Future}
 
 class KafkaingProducerService @Inject()(appConfig: AppConfig)(
-    implicit ec: ExecutionContext
+  implicit ec:                                     ExecutionContext
 ) {
 
   val topic = "kafkaing"

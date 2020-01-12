@@ -1,4 +1,3 @@
-GET         /learning-and-experiments         controllers.LearningAndExperimentsController.index
 GET         /kafkaing                         controllers.KafkaingController.show(success: Option[Boolean] ?= None)
 POST        /kafkaing                         controllers.KafkaingController.submit
 GET         /kafkaing-consumed-records        controllers.KafkaingController.showConsumedRecords
